@@ -1,0 +1,20 @@
+package com.sb_academic_evo;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.sb_academic_evo.controller.StudentController;
+
+class TestStudentController {
+	
+	@Autowired
+	StudentController controller;
+	
+
+	@Test
+	void testStudentLogin() {
+		assertNotNull(controller.verifyStudent("prasanthbaskaran03@gmail.com", "Password@123"));
+	}
+
+}

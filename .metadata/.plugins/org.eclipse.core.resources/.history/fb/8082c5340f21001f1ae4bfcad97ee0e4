@@ -1,0 +1,14 @@
+package com.sb_academic_evo;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TestStaffController {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

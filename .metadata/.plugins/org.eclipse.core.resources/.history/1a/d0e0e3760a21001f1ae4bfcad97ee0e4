@@ -1,0 +1,211 @@
+package com.sb_academic_evo;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class TestAdminController {
+
+	private AdminServiceStub adminServiceStub = new AdminServiceStub();
+    private AdminController adminController = new AdminController(adminServiceStub);
+
+    @Test
+    public void testGetAllStaffIds() {
+        List<Integer> staffIds = Arrays.asList(1, 2, 3);
+        adminServiceStub.setAllStaffIds(staffIds);
+
+        List<Integer> result = adminController.getAllStaffIds();
+
+        assertEquals(staffIds, result);
+    }
+
+    @Test
+    public void testGetAllStudentIds() {
+        List<Integer> studentIds = Arrays.asList(4, 5, 6);
+        adminServiceStub.setAllStudentIds(studentIds);
+
+        List<Integer> result = adminController.getAllStudentIds();
+
+        assertEquals(studentIds, result);
+    }
+
+    // Add similar tests for other @GetMapping methods
+
+    private static class AdminServiceStub implements AdminService {
+        private List<Integer> allStaffIds = new ArrayList<>();
+        private List<Integer> allStudentIds = new ArrayList<>();
+        private int staffId;
+        private int subjectId;
+        private boolean addStaffResult;
+        private boolean addStudentResult;
+        private ResponseEntity<?> findByEmailResult;
+        private boolean addSubjectResult;
+        private ResponseEntity<?> updatePasswordUsingOldPasswordResult;
+        private List<Staff> allStaff = new ArrayList<>();
+        private List<Subject> subjectNotInStaff = new ArrayList<>();
+        private List<Subject> unassociatedSubjects = new ArrayList<>();
+        private boolean addOnlySubjectResult;
+        private boolean assignSubjectToStudentResult;
+        private ResponseEntity<Object> getSubjectsAssignedToStudentResult;
+        private Marks setMarksOfStduentResult;
+        private boolean setAttendanceResult;
+        private ResponseEntity<?> getResultResult;
+        private boolean removeStudentResult;
+        private boolean removeStaffResult;
+
+        @Override
+        public boolean addStaff(Admin admin) {
+            return addStaffResult;
+        }
+
+        @Override
+        public boolean addStudent(Student student) {
+            return addStudentResult;
+        }
+
+        @Override
+        public ResponseEntity<?> findByEmail(String email, String password) {
+            return findByEmailResult;
+        }
+
+        @Override
+        public ResponseEntity<?> addSubject(Staff staff) {
+            return new ResponseEntity<>(addSubjectResult, HttpStatus.CREATED);
+        }
+
+        @Override
+        public ResponseEntity<?> updatePasswordUsingOldPassword(Admin admin, String newPass) {
+            return updatePasswordUsingOldPasswordResult;
+        }
+
+        @Override
+        public List<Staff> getAllStaff() {
+            return allStaff;
+        }
+
+        @Override
+        public List<Subject> getSubjectIdsNotInStaff(int staffId) {
+            return subjectNotInStaff;
+        }
+
+        @Override
+        public List<Subject> findUnassociatedSubjects(int studId) {
+            return unassociatedSubjects;
+        }
+
+        @Override
+        public boolean addOnlySubject(Subject subject) {
+            return addOnlySubjectResult;
+        }
+
+        @Override
+        public boolean assignSubjectToStudent(int stuId, int subId) {
+            return assignSubjectToStudentResult;
+        }
+
+        @Override
+        public ResponseEntity<Object> getSubjectsAssignedToStudent(int stuId) {
+            return getSubjectsAssignedToStudentResult;
+        }
+
+        @Override
+        public Marks setMarksOfStduent(int stuId, int subId, Marks marks) {
+            return setMarksOfStduentResult;
+        }
+
+        @Override
+        public boolean setAttendance(int studId, int attendance) {
+            return setAttendanceResult;
+        }
+
+        @Override
+        public ResponseEntity<?> getResult(int stuId) {
+            return getResultResult;
+        }
+
+        @Override
+        public boolean removeStudent(int studentId) {
+            return removeStudentResult;
+        }
+
+        @Override
+        public boolean removeStaff(int staffId, int adminId) {
+            return removeStaffResult;
+        }
+
+        public void setAllStaffIds(List<Integer> allStaffIds) {
+            this.allStaffIds = allStaffIds;
+        }
+
+        public void setAllStudentIds(List<Integer> allStudentIds) {
+            this.allStudentIds = allStudentIds;
+        }
+
+        public void setAddStaffResult(boolean addStaffResult) {
+            this.addStaffResult = addStaffResult;
+        }
+
+        public void setAddStudentResult(boolean addStudentResult) {
+            this.addStudentResult = addStudentResult;
+        }
+
+        public void setFindByEmailResult(ResponseEntity<?> findByEmailResult) {
+            this.findByEmailResult = findByEmailResult;
+        }
+
+        public void setAddSubjectResult(boolean addSubjectResult) {
+            this.addSubjectResult = addSubjectResult;
+        }
+
+        public void setUpdatePasswordUsingOldPasswordResult(ResponseEntity<?> updatePasswordUsingOldPasswordResult) {
+            this.updatePasswordUsingOldPasswordResult = updatePasswordUsingOldPasswordResult;
+        }
+
+        public void setAllStaff(List<Staff> allStaff) {
+            this.allStaff = allStaff;
+        }
+
+        public void setSubjectNotInStaff(List<Subject> subjectNotInStaff) {
+            this.subjectNotInStaff = subjectNotInStaff;
+        }
+
+        public void setUnassociatedSubjects(List<Subject> unassociatedSubjects) {
+            this.unassociatedSubjects = unassociatedSubjects;
+        }
+
+        public void setAddOnlySubjectResult(boolean addOnlySubjectResult) {
+            this.addOnlySubjectResult = addOnlySubjectResult;
+        }
+
+        public void setAssignSubjectToStudentResult(boolean assignSubjectToStudentResult) {
+            this.assignSubjectToStudentResult = assignSubjectToStudentResult;
+        }
+
+        public void setGetSubjectsAssignedToStudentResult(ResponseEntity<Object> getSubjectsAssignedToStudentResult) {
+            this.getSubjectsAssignedToStudentResult = getSubjectsAssignedToStudentResult;
+        }
+
+        public void setSetMarksOfStduentResult(Marks setMarksOfStduentResult) {
+            this.setMarksOfStduentResult = setMarksOfStduentResult;
+        }
+
+        public void setSetAttendanceResult(boolean setAttendanceResult) {
+            this.setAttendanceResult = setAttendanceResult;
+        }
+
+        public void setGetResultResult(ResponseEntity<?> getResultResult) {
+            this.getResultResult = getResultResult;
+        }
+
+        public void setRemoveStudentResult(boolean removeStudentResult) {
+            this.removeStudentResult = removeStudentResult;
+        }
+
+        public void setRemoveStaffResult(boolean removeStaffResult) {
+            this.removeStaffResult = removeStaffResult;
+        }
+    }
+
+}

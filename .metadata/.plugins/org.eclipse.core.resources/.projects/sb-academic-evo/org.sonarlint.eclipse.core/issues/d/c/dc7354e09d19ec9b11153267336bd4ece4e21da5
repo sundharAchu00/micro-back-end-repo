@@ -1,0 +1,7 @@
+
+Ž
+java:S6204–"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'8´Äßìý1b f31c9542f92d797a57d6f9bafca179cdh
+g
+java:S2201ï"+The return value of "collect" must be used.8´Äßìý1b 0788a6922bd5f9f130e7ed8980193babh
+Ž
+java:S6204ï"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'8´Äßìý1b f31c9542f92d797a57d6f9bafca179cdh

@@ -1,0 +1,127 @@
+package com.sb_academic_evo;
+
+import java.util.Map;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+class SeleniumTests {
+	
+	private static WebDriver driver;
+	private static Map<String, Object> vars;
+	  JavascriptExecutor js;
+
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+		driver = new ChromeDriver();
+	}
+
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+		driver.close();
+	}
+
+	
+	@Test
+	  public void adminlanding() throws InterruptedException {
+	    driver.get("http://localhost:3000/");
+	    driver.manage().window().maximize();
+	    {
+	      WebElement element = driver.findElement(By.cssSelector("path"));
+	      Actions builder = new Actions(driver);
+	      builder.moveToElement(element).perform();
+	    }
+	    {
+	      WebElement element = driver.findElement(By.tagName("body"));
+	      Actions builder = new Actions(driver);
+	      builder.moveToElement(element, 0, 0).perform();
+	    }
+	    driver.findElement(By.cssSelector(".MuiSvgIcon-root")).click();
+	    driver.findElement(By.cssSelector(".MuiButtonBase-root:nth-child(1) > .MuiTypography-root")).click();
+	    driver.findElement(By.id(":r3:")).click();
+	    driver.findElement(By.id(":r3:")).sendKeys("sundhar@gmail.com");
+	    driver.findElement(By.id(":r5:")).click();
+	    {
+	      WebElement element = driver.findElement(By.cssSelector(".MuiButtonBase-root"));
+	      Actions builder = new Actions(driver);
+	      builder.moveToElement(element).perform();
+	    }
+	    driver.findElement(By.id(":r5:")).sendKeys("Shree@123");
+	    driver.findElement(By.cssSelector(".MuiButtonBase-root")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.cssSelector(".MuiButtonBase-root path")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.cssSelector(".MuiButtonBase-root path")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.cssSelector(".MuiListItem-root:nth-child(1) circle")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.cssSelector(".MuiListItem-root:nth-child(2) .MuiSvgIcon-root")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.cssSelector(".MuiListItem-root:nth-child(3) .MuiSvgIcon-root")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.cssSelector(".css-1p823my-MuiListItem-root .MuiSvgIcon-root")).click();
+		Thread.sleep(2000);
+	    driver.findElement(By.cssSelector(".MuiListItem-root:nth-child(5) .MuiSvgIcon-root")).click();
+		Thread.sleep(2000);
+	    driver.findElement(By.cssSelector(".MuiListItem-root:nth-child(6) path")).click();
+		Thread.sleep(2000);
+	    driver.findElement(By.id("studId")).click();
+	    {
+	      WebElement dropdown = driver.findElement(By.id("studId"));
+	      Thread.sleep(1000);
+	      dropdown.findElement(By.xpath("//option[. = '7']")).click();
+	      Thread.sleep(2000);
+	    }
+//	    {
+//	      WebElement element = driver.findElement(By.cssSelector(".MuiTableCell-body:nth-child(2)"));
+//	      Actions builder = new Actions(driver);
+//	      builder.moveToElement(element).clickAndHold().perform();
+//	    }
+//	    {
+//	      WebElement element = driver.findElement(By.cssSelector(".MuiTableCell-body:nth-child(2)"));
+//	      Actions builder = new Actions(driver);
+//	      builder.moveToElement(element).perform();
+//	    }
+//	    {
+//	      WebElement element = driver.findElement(By.cssSelector(".MuiTableCell-body:nth-child(2)"));
+//	      Actions builder = new Actions(driver);
+//	      builder.moveToElement(element).release().perform();
+//	    }
+//	    driver.findElement(By.cssSelector(".MuiGrid-direction-xs-column")).click();
+//	    {
+//	      WebElement dropdown = driver.findElement(By.id("studId"));
+//	      dropdown.findElement(By.xpath("//option[. = '8']")).click();
+//	    }
+//	    driver.findElement(By.cssSelector(".MuiListItem-root:nth-child(6) path")).click();
+//	    driver.findElement(By.cssSelector(".MuiListItem-root:nth-child(7) > .MuiListItemIcon-root")).click();
+//	    driver.findElement(By.id("studId")).click();
+//	    {
+//	      WebElement dropdown = driver.findElement(By.id("studId"));
+//	      dropdown.findElement(By.xpath("//option[. = '7']")).click();
+//	    }
+//	    driver.findElement(By.id("studId")).click();
+//	    {
+//	      WebElement dropdown = driver.findElement(By.id("studId"));
+//	      dropdown.findElement(By.xpath("//option[. = '8']")).click();
+//	    }
+//	    driver.findElement(By.id("studId")).click();
+//	    {
+//	      WebElement dropdown = driver.findElement(By.id("studId"));
+//	      dropdown.findElement(By.xpath("//option[. = '9']")).click();
+//	    }
+//	    driver.findElement(By.cssSelector(".MuiListItem-root:nth-child(8) path:nth-child(1)")).click();
+//	    driver.findElement(By.id(":rl:")).click();
+//	    driver.findElement(By.cssSelector(".css-1hbmzt3-MuiGrid-root")).click();
+//	    driver.findElement(By.cssSelector(".MuiListItem-root:nth-child(9)")).click();
+//	    driver.findElement(By.cssSelector("body")).click();
+	  }
+	
+
+}

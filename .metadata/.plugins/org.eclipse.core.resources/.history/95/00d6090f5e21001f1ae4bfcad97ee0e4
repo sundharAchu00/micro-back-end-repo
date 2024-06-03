@@ -1,0 +1,27 @@
+package com.sb_academic_evo;
+
+import java.util.Map;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+class StudentLandingTest {
+
+	private static WebDriver driver;
+	private static Map<String, Object> vars;
+	  JavascriptExecutor js;
+
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+		driver = new ChromeDriver();
+	}
+
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+		driver.close();
+	}
+
+}

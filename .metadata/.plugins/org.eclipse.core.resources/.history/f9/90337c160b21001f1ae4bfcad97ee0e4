@@ -1,0 +1,88 @@
+package com.sb_academic_evo;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.sb_academic_evo.controller.AdminController;
+import com.sb_academic_evo.service.AdminService;
+@SpringBootTest
+class TestAdminController {
+
+	@Autowired
+	private AdminServiceStub adminServiceStub;
+	
+    private AdminController adminController = new AdminController(adminServiceStub);
+
+    @Test
+    public void testGetAllStaffIds() {
+        List<Integer> staffIds = Arrays.asList(1, 2, 3);
+        adminServiceStub.setAllStaffIds(staffIds);
+
+        List<Integer> result = adminController.getAllStaffIds();
+
+        assertEquals(staffIds, result);
+    }
+
+    @Test
+    public void testGetAllStudentIds() {
+        List<Integer> studentIds = Arrays.asList(4, 5, 6);
+        adminServiceStub.setAllStudentIds(studentIds);
+
+        List<Integer> result = adminController.getAllStudentIds();
+
+        assertEquals(studentIds, result);
+    }
+
+    // Add similar tests for other @GetMapping methods
+
+    private static abstract class AdminServiceStub implements AdminService {
+        private List<Integer> allStaffIds = new ArrayList<>();
+        private List<Integer> allStudentIds = new ArrayList<>();
+        private int staffId;
+        private int subjectId;
+
+        @Override
+        public List<Integer> getAllStaffIds() {
+            return allStaffIds;
+        }
+
+        @Override
+        public List<Integer> getAllStudentIds() {
+            return allStudentIds;
+        }
+
+        // Implement other methods as needed
+
+        public void setAllStaffIds(List<Integer> allStaffIds) {
+            this.allStaffIds = allStaffIds;
+        }
+
+        public void setAllStudentIds(List<Integer> allStudentIds) {
+            this.allStudentIds = allStudentIds;
+        }
+
+        @Override
+        public boolean assignSubjectToStaff(int staffId, int subjectId) {
+            this.staffId = staffId;
+            this.subjectId = subjectId;
+            // You can return a default value or store the parameters for verification
+            return true; // or false, depending on your needs
+        }
+
+        public int getStaffId() {
+            return staffId;
+        }
+
+        public int getSubjectId() {
+            return subjectId;
+        }
+    }
+
+}

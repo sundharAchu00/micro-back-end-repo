@@ -1,0 +1,52 @@
+package com.sb_academic_evo;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.sb_academic_evo.controller.AdminController;
+import com.sb_academic_evo.entity.Student;
+import com.sb_academic_evo.service.AdminService;
+@SpringBootTest
+class TestAdminController {
+	
+//	public List<Student> getAllStudent()
+	
+/*
+ * @GetMapping("/getStaff")
+	public List<Staff> getAllStaff() {
+		return service.getAllStaff();
+
+	}
+	@GetMapping("/studIds")
+	public List<Integer> getAllStudentIds() {
+		return service.getAllStudentIds();
+
+	}
+	
+	@GetMapping("/staffIds")
+	public List<Integer> getAllStaffIds() {
+		return service.getAllStaffIds();
+
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity<?> loginRequest(@RequestParam String email, @RequestParam String password) {
+		return service.findByEmail(email, password);
+	}
+
+ * 
+ * */	
+
+
+
+}

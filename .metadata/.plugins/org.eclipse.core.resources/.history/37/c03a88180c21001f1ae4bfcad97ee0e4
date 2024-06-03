@@ -1,0 +1,72 @@
+package com.sb_academic_evo;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.sb_academic_evo.controller.AdminController;
+import com.sb_academic_evo.service.AdminService;
+
+@SpringBootTest
+class TestAdminController {
+
+	@Autowired
+	private AdminController adminController;
+
+	private AdminServiceStub adminServiceStub = new AdminServiceStub();
+
+	@Test
+	public void testGetAllStaffIds() {
+		List<Integer> staffIds = Arrays.asList(1, 2, 3);
+		adminServiceStub.setAllStaffIds(staffIds);
+
+		List<Integer> result = adminController.getAllStaffIds();
+
+		assertEquals(staffIds, result);
+	}
+
+	@Test
+	public void testGetAllStudentIds() {
+		List<Integer> studentIds = Arrays.asList(4, 5, 6);
+		adminServiceStub.setAllStudentIds(studentIds);
+
+		List<Integer> result = adminController.getAllStudentIds();
+
+		assertEquals(studentIds, result);
+	}
+
+	// Add similar tests for other @GetMapping methods
+
+	private static class AdminServiceStub implements AdminService {
+		private List<Integer> allStaffIds = new ArrayList<>();
+		private List<Integer> allStudentIds = new ArrayList<>();
+
+		@Override
+		public List<Integer> getAllStaffIds() {
+			return allStaffIds;
+		}
+
+		@Override
+		public List<Integer> getAllStudentIds() {
+			return allStudentIds;
+		}
+
+		// Implement other methods as needed
+
+		public void setAllStaffIds(List<Integer> allStaffIds) {
+			this.allStaffIds = allStaffIds;
+		}
+
+		public void setAllStudentIds(List<Integer> allStudentIds) {
+			this.allStudentIds = allStudentIds;
+		}
+
+		// Implement other setter methods as needed
+	}
+}
